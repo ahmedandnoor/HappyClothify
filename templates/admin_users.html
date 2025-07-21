@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Users - Admin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fcff;
+      padding: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 25px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 0 12px rgba(0,123,255,0.1);
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #d4ecff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f1f8ff;
+    }
+
+    a.delete {
+      color: red;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.delete:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>All Registered Users</h2>
+  <table>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>WhatsApp</th>
+      <th>Password</th>
+      <th>Action</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.whatsapp }}</td>
+      <td>{{ user.password }}</td>
+      <td><a class="delete" href="/delete_user/{{ loop.index0 }}">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+</body>
+</html>

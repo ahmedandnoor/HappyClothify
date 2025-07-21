@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      color: #007bff;
+      text-align: center;
+    }
+
+    .top-buttons {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .top-buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .top-buttons a:hover {
+      background-color: #0056b3;
+      box-shadow: 0 0 10px #007bff;
+    }
+
+    .section-title {
+      font-size: 20px;
+      margin-top: 30px;
+      padding: 10px;
+      background-color: #eaf4ff;
+      border-left: 5px solid #007bff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #dbefff;
+    }
+
+    img {
+      border-radius: 8px;
+    }
+
+    .actions a {
+      margin: 0 5px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .actions a:hover {
+      text-decoration: underline;
+    }
+
+    .product-link {
+      font-size: 12px;
+      color: #555;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Admin Dashboard</h1>
+
+  <div class="top-buttons">
+    <a href="{{ url_for('add_product') }}">Add Product</a>
+    <a href="{{ url_for('admin_orders') }}">Orders</a>
+    <a href="{{ url_for('admin_users') }}">Users</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </div>
+
+  <div class="section-title">Product List</div>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Image</th>
+      <th>Product Link</th>
+      <th>Actions</th>
+    </tr>
+    {% for product in products %}
+    <tr>
+      <td>{{ product.name }}</td>
+      <td>{{ product.description }}</td>
+      <td>${{ product.price }}</td>
+      <td><img src="{{ product.image }}" width="60" height="60"></td>
+      <td>
+        {% if product.link %}
+          <div class="product-link">{{ product.link }}</div>
+        {% else %}
+          -
+        {% endif %}
+      </td>
+      <td class="actions">
+        <a href="{{ url_for('edit_product', product_id=product.id) }}">Edit</a>
+        <a href="{{ url_for('delete_product', product_id=product.id) }}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+</body>
+</html>

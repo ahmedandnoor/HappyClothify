@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Product - Admin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f9ff;
+      padding: 50px;
+    }
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 150, 255, 0.3);
+      max-width: 500px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      color: #007bff;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1e7e34;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Edit Product</h2>
+    <form method="POST">
+      <input type="text" name="name" value="{{ product.name }}" required />
+      <textarea name="description" required>{{ product.description }}</textarea>
+      <input type="number" name="price" value="{{ product.price }}" required />
+      <input type="text" name="image" value="{{ product.image }}" required />
+      <input type="text" name="link" value="{{ product.link }}" placeholder="Product Link (Optional)" />
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+</body>
+</html>

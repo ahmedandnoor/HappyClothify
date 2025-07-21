@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>All Orders - Admin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4faff;
+      padding: 30px;
+    }
+
+    h2 {
+      color: #007bff;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,123,255,0.1);
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #d4ecff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    img {
+      width: 50px;
+      border-radius: 5px;
+    }
+
+    a.delete {
+      color: red;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.delete:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h2>All Orders</h2>
+  <table>
+    <tr>
+      <th>Username</th>
+      <th>WhatsApp</th>
+      <th>Product</th>
+      <th>Image</th>
+      <th>Address</th>
+      <th>Time</th>
+      <th>Action</th>
+    </tr>
+    {% for order in orders %}
+    <tr>
+      <td>{{ order.username }}</td>
+      <td>{{ order.whatsapp }}</td>
+      <td>{{ order.product.name }}</td>
+      <td><img src="{{ order.product.image }}"></td>
+      <td>
+        {{ order.address.name }}<br>
+        {{ order.address.province }}, {{ order.address.city }}<br>
+        {{ order.address.area }}<br>
+        {{ order.address.detail }}<br>
+        {{ order.address.postal }}<br>
+        Notes: {{ order.address.notes }}
+      </td>
+      <td>{{ order.timestamp }}</td>
+      <td><a class="delete" href="/delete_order/{{ loop.index0 }}">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

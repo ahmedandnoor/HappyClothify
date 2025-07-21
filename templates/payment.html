@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Payment - HappyClothify</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      padding: 40px;
+    }
+
+    .form-box {
+      max-width: 600px;
+      margin: auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,123,255,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 25px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      box-shadow: 0 0 10px #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Enter Payment Details</h2>
+    <form action="/payment/{{ product_id }}" method="POST">
+      <label>Payment Method:</label>
+      <select name="method" required>
+        <option value="">-- Select Method --</option>
+        <option value="easypaisa">Easypaisa</option>
+        <option value="jazzcash">JazzCash</option>
+        <option value="binance">Binance</option>
+      </select>
+
+      <label>Account Number:</label>
+      <input type="text" name="account" required>
+
+      <label>Transaction ID:</label>
+      <input type="text" name="transaction" required>
+
+      <button type="submit">Proceed to Address</button>
+    </form>
+  </div>
+</body>
+</html>

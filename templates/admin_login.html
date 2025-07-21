@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login - HappyClothify</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f9ff;
+      padding: 50px;
+    }
+
+    .login-box {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0,123,255,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 25px;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      box-shadow: 0 0 10px #007bff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <h2>Admin Login</h2>
+    <form method="POST">
+      <input type="password" name="password" placeholder="Enter Admin Password" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+</body>
+</html>
